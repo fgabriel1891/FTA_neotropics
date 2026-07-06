@@ -1,2 +1,2 @@
-# FTA_neotropics
-Open version of manuscript draft
+# Functional asymmetry in multitrophic assemblages
+Manuscript draft
