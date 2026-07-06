@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-07-05">
+<meta name="keywords" content="Community assembly, Environmental filtering, Functional diversity, Functional richness, Functional dispersion, Multitrophic assemblages">
+
+<title>Distinct functional responses of producers and consumers to climate shape trophic asymmetry</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a1ff8711b79ae3724c050874b28d9907.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+
+
+<meta name="citation_title" content="Distinct functional responses of producers and consumers to climate shape trophic asymmetry">
+<meta name="citation_abstract" content="**Aim:** Trait-based approaches have greatly improved our understanding of community assembly but have largely focused on single trophic levels. Because species interactions emerge through trait matching between consumers and their resources, differential responses of trophic levels to environmental filtering may generate mismatches in functional diversity. We introduce the concept of functional trophic asymmetry (FTA) to quantify these differences and evaluate how climatic gradients shape multitrophic community assembly.
+
+**Location:** Neotropics.
+
+**Time period:** Contemporary.
+
+**Major taxa studied:** Palms and mammalian frugivores.
+
+**Methods:** We combined species distributions, functional trait data, and pairwise mutualistic interactions to estimate functional trophic asymmetry across the Neotropics. To overcome incomplete interaction data, we trained machine-learning models to downscale a continental interaction metaweb into grid-cell synthetic ecological networks. Functional richness and functional dispersion were quantified independently for palms and mammals, and FTA was estimated as the difference between trophic levels. Generalized additive models were used to relate geographic variation in FTA to major climatic gradients.
+
+**Results:** Functional trophic asymmetry exhibited pronounced geographic variation across the Neotropics, arising primarily because climatic gradients affected mammalian functional diversity more strongly than palm functional diversity. Climatic effects differed between dimensions of functional diversity: functional richness asymmetry showed little climatic structure, whereas functional dispersion asymmetry varied strongly along a broad climatic gradient from warm, wet, climatically stable environments to colder, drier, and more seasonal regions. These patterns indicate that contemporary climate reorganizes the distribution of consumer functional strategies more readily than the breadth of functional strategies represented across trophic levels.
+
+**Main conclusions:** Differential climatic filtering across trophic levels generates geographic variation in functional trophic asymmetry, providing a mechanistic link between broad-scale environmental gradients and the functional organization of multitrophic communities. By integrating trait-based ecology across trophic levels, FTA provides a general framework for investigating how environmental change reshapes interaction niches and the functional organization of ecological networks across ecosystems.
+">
+<meta name="citation_keywords" content="Community assembly,Environmental filtering,Functional diversity,Functional richness,Functional dispersion,Multitrophic assemblages">
+<meta name="citation_author" content="Gabriel Munoz-Acevedo">
+<meta name="citation_author" content="Paul Savary">
+<meta name="citation_author" content="W. Daniel Kissling">
+<meta name="citation_author" content="Jean Phillipe Lessard">
+<meta name="citation_publication_date" content="2026-07-05">
+<meta name="citation_cover_date" content="2026-07-05">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-07-05">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=Literate programming;,citation_author=Donald E. Knuth;,citation_publication_date=1984-05;,citation_cover_date=1984-05;,citation_year=1984;,citation_fulltext_html_url=https://doi.org/10.1093/comjnl/27.2.97;,citation_issue=2;,citation_doi=10.1093/comjnl/27.2.97;,citation_issn=0010-4620;,citation_volume=27;,citation_journal_title=Comput. J.;,citation_publisher=Oxford University Press, Inc.;">
+</head>
+
+<body>
+
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Distinct functional responses of producers and consumers to climate shape trophic asymmetry</h1>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+            <div class="quarto-title-meta-author">
+          <div class="quarto-title-meta-heading">Authors</div>
+          <div class="quarto-title-meta-heading">Affiliations</div>
+          
+                <div class="quarto-title-meta-contents">
+            <p class="author">Gabriel Munoz-Acevedo </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Concordia University
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Paul Savary </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Université Marie et Louis Pasteur
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">W. Daniel Kissling </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        University of Amsterdam
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Jean Phillipe Lessard </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Concordia University
+                      </p>
+                  </div>
+                    </div>
+        
+        <div class="quarto-title-meta">
+
+                      
+                <div>
+            <div class="quarto-title-meta-heading">Published</div>
+            <div class="quarto-title-meta-contents">
+              <p class="date">July 5, 2026</p>
+            </div>
+          </div>
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      </div>
+    </div>
+
+    <div>
+      <div class="abstract">
+        <div class="block-title">Abstract</div>
+        <p><strong>Aim:</strong> Trait-based approaches have greatly improved our understanding of community assembly but have largely focused on single trophic levels. Because species interactions emerge through trait matching between consumers and their resources, differential responses of trophic levels to environmental filtering may generate mismatches in functional diversity. We introduce the concept of functional trophic asymmetry (FTA) to quantify these differences and evaluate how climatic gradients shape multitrophic community assembly.</p>
+        <p><strong>Location:</strong> Neotropics.</p>
+        <p><strong>Time period:</strong> Contemporary.</p>
+        <p><strong>Major taxa studied:</strong> Palms and mammalian frugivores.</p>
+        <p><strong>Methods:</strong> We combined species distributions, functional trait data, and pairwise mutualistic interactions to estimate functional trophic asymmetry across the Neotropics. To overcome incomplete interaction data, we trained machine-learning models to downscale a continental interaction metaweb into grid-cell synthetic ecological networks. Functional richness and functional dispersion were quantified independently for palms and mammals, and FTA was estimated as the difference between trophic levels. Generalized additive models were used to relate geographic variation in FTA to major climatic gradients.</p>
+        <p><strong>Results:</strong> Functional trophic asymmetry exhibited pronounced geographic variation across the Neotropics, arising primarily because climatic gradients affected mammalian functional diversity more strongly than palm functional diversity. Climatic effects differed between dimensions of functional diversity: functional richness asymmetry showed little climatic structure, whereas functional dispersion asymmetry varied strongly along a broad climatic gradient from warm, wet, climatically stable environments to colder, drier, and more seasonal regions. These patterns indicate that contemporary climate reorganizes the distribution of consumer functional strategies more readily than the breadth of functional strategies represented across trophic levels.</p>
+        <p><strong>Main conclusions:</strong> Differential climatic filtering across trophic levels generates geographic variation in functional trophic asymmetry, providing a mechanistic link between broad-scale environmental gradients and the functional organization of multitrophic communities. By integrating trait-based ecology across trophic levels, FTA provides a general framework for investigating how environmental change reshapes interaction niches and the functional organization of ecological networks across ecosystems.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="keywords">
+        <div class="block-title">Keywords</div>
+        <p>Community assembly, Environmental filtering, Functional diversity, Functional richness, Functional dispersion, Multitrophic assemblages</p>
+      </div>
+    </div>
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">INTRODUCTION</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">METHODS</a>
+  <ul class="collapse">
+  <li><a href="#study-system" id="toc-study-system" class="nav-link" data-scroll-target="#study-system"><em>Study system</em></a></li>
+  <li><a href="#species-occurrence-data" id="toc-species-occurrence-data" class="nav-link" data-scroll-target="#species-occurrence-data"><em>Species occurrence data</em></a></li>
+  <li><a href="#climatic-data" id="toc-climatic-data" class="nav-link" data-scroll-target="#climatic-data"><em>Climatic data</em></a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">RESULTS</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">DISCUSSION</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">CONCLUSION</a></li>
+  <li><a href="#supplementary-material" id="toc-supplementary-material" class="nav-link" data-scroll-target="#supplementary-material">Supplementary material</a>
+  <ul class="collapse">
+  <li><a href="#cumulative-variance-explained-by-pcoa-axes" id="toc-cumulative-variance-explained-by-pcoa-axes" class="nav-link" data-scroll-target="#cumulative-variance-explained-by-pcoa-axes">Cumulative variance explained by PCoA axes</a></li>
+  <li><a href="#trait-spaces-of-palms-and-mammals" id="toc-trait-spaces-of-palms-and-mammals" class="nav-link" data-scroll-target="#trait-spaces-of-palms-and-mammals">Trait spaces of palms and mammals</a></li>
+  </ul></li>
+  <li><a href="#pariwise-correlations-among-climatic-variables" id="toc-pariwise-correlations-among-climatic-variables" class="nav-link" data-scroll-target="#pariwise-correlations-among-climatic-variables">Pariwise correlations among climatic variables</a></li>
+  <li><a href="#null-model-distributions" id="toc-null-model-distributions" class="nav-link" data-scroll-target="#null-model-distributions">Null model distributions</a></li>
+  <li><a href="#diagnosis-of-gams" id="toc-diagnosis-of-gams" class="nav-link" data-scroll-target="#diagnosis-of-gams">diagnosis of GAMs</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+  
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">INTRODUCTION</h2>
+<p>Ecologists often examine patterns of functional trait diversity to investigate community assembly processes (Ackerly 2003; Kraft et al.&nbsp;2015). To date, however, most trait-based approaches have focused on functional trait diversity within a single trophic level, often assuming competition as the dominant species interaction structuring communities (Weiher et al., 1998; Tilman 2004). In contrast, research in network ecology has extended trait-based community assembly across trophic levels. For example, studies demonstrated that trait matching across trophic levels plays a key role in the assembly of species interactions (Lavorel et al.&nbsp;2013) and the emergence of network structure. (Allesina, Alonso, and Pascual 2008; Marjakangas et al.&nbsp;2022; Saravia et al.&nbsp;2022). However, despite the growing availability of species trait and distribution data across multiple trophic levels (Kissling et al., 2015; Schleuning et al., 2023), our understanding of how assembly processes act within and between trophic levels jointly shape multitrophic communities remains limited (Guzman et al., 2019; Marjakangas et al., 2022)</p>
+<p>Classical approaches to study community assembly rely on the concept of environmental filtering, where density independent conditions constrain the functional diversity of species assemblages (Laliberté and Legendre 2010; Villéger, Mason, and Mouillot 2008; HilleRisLambers et al.&nbsp;2012; Kraft et al.&nbsp;2015). Functional diversity is described through complementary measures such as functional richness (FR) and functional dispersion (FDis) (Mason et al., 2005; Mason, and Mouillot 2008). Functional richness is often used to estimate the strength of which environmental filtering constrains the morphological specialization of species assemblages. Functional richness typically measures the total variability of functional traits observed in a community. High functional richness can indicate weak environmental selection whereas low functional richness can indicate strong selection. Functional dispersion is often used to estimate the strength to which species partition the local trait space. Functional dispersion typically measures the degree of species clustering within a community trait space (Mason et al.&nbsp;2005; Laliberté and Legendre 2010), while (Kraft et al., 2008; Kraft and Ackerly 2010; Kraft et al.&nbsp;2015). High functional dispersion can indicate the coexistence of functionally distinct species, whereas low functional dispersion can indicate trait convergence (Kraft et al., 2008; Halpern and Floeter 2008; Paine et al.&nbsp;2011).</p>
+<p>In a multitrophic context, where traits mediating species interactions (e.g.&nbsp;plant fruit size - animal body size) across trophic levels can also mediate the responses of species to gradients in their abiotic environment (e.g.&nbsp;water availability – temperature) (McCain and King 2014; Moretti and Legg 2009; Dehling et al.&nbsp;2020), the effects of environmental filtering can cascade to other trophic levels such that the environment filters on consumer traits can shape the functional richness or dispersion of their resources (and vice-versa). (Albrecht et al., 2018; Guzman et al.&nbsp;2019). Moreover, the same environmental gradient could exert ecological pressures of different strength on communities at distinct trophic levels (Marjakangas et al.&nbsp;2022). These differences may generate asymmetrical patterns of functional richness and dispersion between consumers and resources, modulated by their degree of reciprocal dependency or co-evolution (Medeiros et al., 2018; Zheng et al., 2021; Borzone et al., 2022). These asymmetries could potentially shape large scale patterns of interaction assembly and possibly constrain the structure or topologies of trophic networks (Blüthgen et al.&nbsp;2007; Schleuning et al.&nbsp;2012; Saravia et al., 2022; Dehling et al.&nbsp;2020).</p>
+<p>Here, we introduce the concept of functional trophic asymmetry (FTA), which allows inferring the difference of environmental filtering pressures on the functional diversity of multitrophic assemblages (Figure 1). FTA is the difference of standardized effect sizes (Z-scores) of functional richness and functional dispersion between trophic levels. FTA can occur because traits mediating species interactions (i.e., interaction niches) across trophic levels can also mediate the responses of species to their abiotic environment (i.e., environmental niches) (McCain and King 2014; Moretti and Legg 2009; Dehling et al.&nbsp;2020). As an example, plant seed size determines the outcome of animal-mediated seed dispersal (Donoso et al.&nbsp;2017, 2020) as well as physiological limits, such as tolerances of plant seedlings to desiccation (Hoekstra, et al., 2001). For functional richness, high FTA could indicate differences in the strength of environmental selection over the interaction niches of distinct trophic levels within a multitrophic species assemblage. Alternatively, low FTA could indicate that the strength of the environment selection shaping interaction niches is similar between trophic levels, e.g., equally weak or equally strong (Marjakangas et al.&nbsp;2022). Low FTA could also emerge under strong trait matching and therefore indicate the influence of trait co-evolution during multitrophic community assembly (Dehling et al.&nbsp;2014; Albrecht et al.&nbsp;2018). For functional dispersion, FTA can be an indicator variation in the relative importance between trophic levels of processes promoting trait convergence or divergence, including niche differentiation and dispersal constraints (Fitzgerald et al., 2017; Bauer et al., 2021). By studying spatial variation in FTA along environmental gradients, we aim to determine the conditions when environmental filtering versus cross-trophic trait matching plays the dominant role in structuring multitrophic communities (Schleuning et al.&nbsp;2020; Bello, et al 2023).</p>
+<p>Mutualistic interactions between palms and their mammalian frugivores are important to sustain biodiversity and ecosystem function in tropical ecosystems (Jordano et al., 2010; Bogoni, Peres, and Ferraz 2020; Dracxler and Kissling 2022). Mammalian frugivores facilitate the dispersal of palm fruits, which helps to prevent local extinctions amid disturbance and to maintain biodiversity in these ecological networks (Acevedo-Quintero et al.&nbsp;2020; Messeder et al.&nbsp;2020; Dehling 2018). To effectively preserve the structure of these interactions, it is crucial to understand how co-occurring palm (producer) and mammalian frugivore (consumer) communities will jointly respond to global climatic change. By examining the co-variation in their functional richness and functional dispersion across broad geographic scales and linking those patterns to spatial and/or temporal variation in climate (Figure 2), we identify the key climatic factors that may influence the assembly of their mutualistic relationships. Here, we ask (1) which climatic variable(s) best explain(s) geographic variation in the functional richness and dispersion of palms and mammalian frugivores, (2) whether differences in these relationships lead to FTA, and (3) which climatic variable best explains geographic variation in FTA across the Neotropics.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/clipboard-2550083477.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure 1: Conceptual illustration of functional trophic asymmetry (FTA) along environmental gradients. Left panels show hypothetical responses of producer (green) and consumer (orange) functional richness to an environmental gradient, with FTA represented as the vertical distance between trophic-level responses. Upper and lower panels illustrate alternative scenarios in which FTA changes or remains relatively constant across the gradient. Right panels show corresponding examples for functional dispersion (FD), where differences in the magnitude of producer and consumer functional dispersion are depicted by barplots at contrasting positions along the environmental gradient. Curves, bars, and distances are illustrative and not derived from empirical data."><img src="images/clipboard-2550083477.png" class="img-fluid figure-img" alt="Figure 1: Conceptual illustration of functional trophic asymmetry (FTA) along environmental gradients. Left panels show hypothetical responses of producer (green) and consumer (orange) functional richness to an environmental gradient, with FTA represented as the vertical distance between trophic-level responses. Upper and lower panels illustrate alternative scenarios in which FTA changes or remains relatively constant across the gradient. Right panels show corresponding examples for functional dispersion (FD), where differences in the magnitude of producer and consumer functional dispersion are depicted by barplots at contrasting positions along the environmental gradient. Curves, bars, and distances are illustrative and not derived from empirical data."></a></p>
+<figcaption><strong>Figure 1: Conceptual illustration of functional trophic asymmetry (FTA) along environmental gradients.</strong> Left panels show hypothetical responses of producer (green) and consumer (orange) functional richness to an environmental gradient, with FTA represented as the vertical distance between trophic-level responses. Upper and lower panels illustrate alternative scenarios in which FTA changes or remains relatively constant across the gradient. Right panels show corresponding examples for functional dispersion (FD), where differences in the magnitude of producer and consumer functional dispersion are depicted by barplots at contrasting positions along the environmental gradient. Curves, bars, and distances are illustrative and not derived from empirical data.</figcaption>
+</figure>
+</div>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">METHODS</h2>
+<section id="study-system" class="level3">
+<h3 class="anchored" data-anchor-id="study-system"><em>Study system</em></h3>
+<p>We focused on multitrophic assemblages of Neotropical palms and their mutualistic, seed dispersing, mammalian frugivores. Palms (Plantae: Arecaceae) are a keystone plant family from tropical regions that provides fruit resources to a wide variety of vertebrate frugivores, including birds and mammals (Muñoz, et al., 2019; Zona and Henderson 1989). Frugivory-related traits have notably underlain palm diversification and played a key role in the evolution of palm traits (Onstein et al.&nbsp;2014, 2017). Frugivorous mammals (Animalia: Mammalia) are among the most important palm-seed dispersers, particularly over long distances (Lim et al., 2020). Most frugivorous mammals feeding on palms are seed eaters and pulp eaters, dispersing palm seeds mostly via ectozoochorus dispersal (Messeder et al.&nbsp;2020; Dracxler and Kissling 2022).</p>
+</section>
+<section id="species-occurrence-data" class="level3">
+<h3 class="anchored" data-anchor-id="species-occurrence-data"><em>Species occurrence data</em></h3>
+<p>We obtained binary species distribution data (presence/absence) of palms from the geographic range maps of (Bjorholm et al.&nbsp;2005) and on mammals from the IUCN (International Union for the Conservation of Nature) data portal. We defined multitrophic assemblages across the Neotropics, by intersecting species-level range maps with Morrone’s (2014) delineation of neotropical biogeographic provinces. A species was considered present in a province when at least 5% of its occupied range cells occurred within that province, reducing the influence of marginal overlaps between species ranges and province boundaries. Species represented by fewer than ten occupied raster cells were excluded. This procedure was applied independently to palms and mammals, producing province-level presence–absence matrices for each trophic level.</p>
+<p><em>Species trait data</em></p>
+<p>We collected species-level multitrophic trait data related to the physiological tolerance of palms and frugivorous mammals to the abiotic environment and to their mutualistic interactions. For palms, we extracted data from the PalmTraits 1.0 dataset (Kissling et al.&nbsp;2019). We collected data on growth form, maximum stem height, and average fruit length. For frugivorous mammals, we obtained trait data from the EltonTraits 1.0 database (Wilman et al.&nbsp;2014). We selected data on body mass, diet, and daily activities. Diet data from the EltonTraits 1.0 database is coded as percentage use distribution across ten diet categories. We excluded from our analysis species without fruit in their diet. Activity was coded as a dummy variable with three categories (Diurnal, Crepuscular, Nocturnal). Finally, body mass was coded as a numerical variable in kg. We excluded bats from the analysis as almost no Neotropical bat species is feeding on palm fruits (Messeder et al.&nbsp;2020). In total, we worked with a set of 494 palm species and 488 mammal frugivore species with linked trait and geographic data, which comprised respectively ~61% (Roncal et al., 2013; Baslev et al., 2015) and ~64% (Fuzessy &amp; Pizo 2025) of reported species for the Neotropics.</p>
+</section>
+<section id="climatic-data" class="level3">
+<h3 class="anchored" data-anchor-id="climatic-data"><em>Climatic data</em></h3>
+<p>We used the 19 bioclimatic variables from WorldClim v2.1 (Fick &amp; Hijmans, 2017) to characterize large-scale climatic variation across Neotropical biogeographic regions. For each region, we extracted the mean value of each bioclimatic variable by averaging raster cells contained within regional boundaries. To reduce dimensionality and account for collinearity among climatic predictors, we performed a principal component analysis (PCA) on the standardized bioclimatic variables. The first three principal components captured the dominant gradients of climatic variation across the Neotropics. PCA effectively summarized climatic variation across biogeographic regions into three principal components that together explained 87.9% of the total variance (Table S1). PC1 (59.7%) described a gradient from warm, wet, and climatically stable environments (negative values) to cooler and more thermally seasonal climates (positive values). PC2 (19.3%) represented variation in dry-season moisture availability, ranging from hot climates with pronounced dry seasons (negative values) to climates with wetter dry periods (positive values). PC3 (8.9%) captured a transition from temperature-driven seasonality (negative values) to precipitation-driven seasonality (positive values) (Figure 2). These linear components were subsequently used as predictors in all analyses of functional diversity and functional trophic asymmetry.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/clipboard-1627886034.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure 2. Climatic principal components and their geographic distribution across biogeographic provinces in the Neotropics. (A) PCA loading plot showing the loadings of the 19 WorldClim bioclimatic variables on the first two principal components (PC1 and PC2). Blue arrows represent precipitation variables and orange arrows represent temperature variables. Variable abbreviations are: MAP, mean annual precipitation; PWetQ, precipitation of the wettest quarter; PDryQ, precipitation of the driest quarter; PWarmQ, precipitation of the warmest quarter; PColdQ, precipitation of the coldest quarter; PWM, precipitation of the wettest month; PDM, precipitation of the driest month; PS, precipitation seasonality; MAT, mean annual temperature; MTCM, mean temperature of the coldest month; MTWM, mean temperature of the warmest month; MTColdQ, mean temperature of the coldest quarter; MTWarmQ, mean temperature of the warmest quarter; MTDryQ, mean temperature of the driest quarter; MTWetQ, mean temperature of the wettest quarter; TAR, annual temperature range; MDR, mean diurnal range; TS, temperature seasonality; and ISO, isothermality. The shaded quadrants represent four broad climatic domains defined by the PCA axes: warm/stable + wet, cold/seasonal + wet, warm/stable + dry, and cold/seasonal + dry. Therefore, PC1 represents a gradient from warm, climatically stable environments to colder, more seasonal climates, whereas PC2 represents a gradient from wetter to drier conditions. (B) Geographic distribution of these four climatic domains across biogeographic provinces (Morrone 2014) in the Neotropics"><img src="images/clipboard-1627886034.png" class="img-fluid figure-img" alt="Figure 2. Climatic principal components and their geographic distribution across biogeographic provinces in the Neotropics. (A) PCA loading plot showing the loadings of the 19 WorldClim bioclimatic variables on the first two principal components (PC1 and PC2). Blue arrows represent precipitation variables and orange arrows represent temperature variables. Variable abbreviations are: MAP, mean annual precipitation; PWetQ, precipitation of the wettest quarter; PDryQ, precipitation of the driest quarter; PWarmQ, precipitation of the warmest quarter; PColdQ, precipitation of the coldest quarter; PWM, precipitation of the wettest month; PDM, precipitation of the driest month; PS, precipitation seasonality; MAT, mean annual temperature; MTCM, mean temperature of the coldest month; MTWM, mean temperature of the warmest month; MTColdQ, mean temperature of the coldest quarter; MTWarmQ, mean temperature of the warmest quarter; MTDryQ, mean temperature of the driest quarter; MTWetQ, mean temperature of the wettest quarter; TAR, annual temperature range; MDR, mean diurnal range; TS, temperature seasonality; and ISO, isothermality. The shaded quadrants represent four broad climatic domains defined by the PCA axes: warm/stable + wet, cold/seasonal + wet, warm/stable + dry, and cold/seasonal + dry. Therefore, PC1 represents a gradient from warm, climatically stable environments to colder, more seasonal climates, whereas PC2 represents a gradient from wetter to drier conditions. (B) Geographic distribution of these four climatic domains across biogeographic provinces (Morrone 2014) in the Neotropics"></a></p>
+<figcaption><strong>Figure 2. Climatic principal components and their geographic distribution across biogeographic provinces in the Neotropics.</strong> (A) PCA loading plot showing the loadings of the 19 WorldClim bioclimatic variables on the first two principal components (PC1 and PC2). Blue arrows represent precipitation variables and orange arrows represent temperature variables. Variable abbreviations are: MAP, mean annual precipitation; PWetQ, precipitation of the wettest quarter; PDryQ, precipitation of the driest quarter; PWarmQ, precipitation of the warmest quarter; PColdQ, precipitation of the coldest quarter; PWM, precipitation of the wettest month; PDM, precipitation of the driest month; PS, precipitation seasonality; MAT, mean annual temperature; MTCM, mean temperature of the coldest month; MTWM, mean temperature of the warmest month; MTColdQ, mean temperature of the coldest quarter; MTWarmQ, mean temperature of the warmest quarter; MTDryQ, mean temperature of the driest quarter; MTWetQ, mean temperature of the wettest quarter; TAR, annual temperature range; MDR, mean diurnal range; TS, temperature seasonality; and ISO, isothermality. The shaded quadrants represent four broad climatic domains defined by the PCA axes: warm/stable + wet, cold/seasonal + wet, warm/stable + dry, and cold/seasonal + dry. Therefore, PC1 represents a gradient from warm, climatically stable environments to colder, more seasonal climates, whereas PC2 represents a gradient from wetter to drier conditions. (B) Geographic distribution of these four climatic domains across biogeographic provinces (Morrone 2014) in the Neotropics</figcaption>
+</figure>
+</div>
+<p><strong>Statistical analysis</strong></p>
+<p>Functional diversity (FD) metrics were quantified from multidimensional trait spaces constructed independently for palms and mammals. Species-level functional dissimilarities were calculated using Gower distances to accommodate mixed trait types, and principal coordinates analysis (PCoA) was used to project species into continuous functional trait spaces. For each trophic level, we retained the minimum number of PCoA axes required to explain at least 75% of the total trait variation. Local FD metrics were calculated from the subset of species present within a biogeographical province. For each assemblage, we quantified species richness, functional richness (FR) and functional dispersion (FDis). Functional richness (FR) measured the occupied volume of the local assemblage within the larger trait space of the continental pool. Functional dispersion (FDis) measured the clustering of species within trait space relative to the assemblage centroid, reflecting the degree of trait divergence or trait clustering within a species assemblage. Metrics were calculated separately for palms and mammals using the FD package in R (Laliberte &amp; Legendre 2010). Biogeographic assemblages containing fewer than three species of palms and mammals respectively were excluded from estimations.</p>
+<p>We standardized each observed functional richness and functional dispersion metric against a richness-constrained expected metric values drawn from a distribution of null assemblages. For each palm and mammal assemblage, we generated 999 null assemblages by randomly selecting the same number of observed species from the continental species pool without replacement and recalculating FR and FDis at each permutation. Standardized effect sizes were calculated as the difference between the observed value and the mean null expectation, divided by the standard deviation of the null distribution. Positive SES values indicate increased trait volumes or trait overdispersion, whereas negative values indicate reduced trait-space volumes and trait clustering.</p>
+<p>We quantified FTA as the difference between mammal and palm SES values. Positive values indicate that mammal assemblages exhibit greater functional richness or dispersion relative to null expectations than palm assemblages, whereas negative values indicate the opposite. To assess climatic influences on functional trophic asymmetry, we fitted separate Generalized Additive Models (GAMs) for FTA-FR and FTA-FDis using the three climatic principal components described above as predictors. GAMs are allowed for non-linear responses through penalized smooth functions (Wood 2017), with separate smooths fitted for each climatic predictor.</p>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">RESULTS</h2>
+<p><strong>Spatial distribution of trophic functional diversity and asymmetry</strong></p>
+<p>Functional diversity exhibited marked geographic variation across the Neotropics. Palm functional richness was generally highest in Central America and parts of eastern and southern South America (Figure 3A), whereas mammal functional richness was highest in eastern Brazil but comparatively low across much of Amazonia and western South America (Figure 3B). Consequently, functional trophic asymmetry in richness exhibited a pronounced west–east gradient (Figure 3C), with palm assemblages exceeding mammal assemblages across much of Amazonia and mammal assemblages exhibiting relatively greater functional richness in eastern South America. Patterns of functional dispersion differed from those of richness. Palm functional dispersion peaked in southeastern Brazil (Figure 3D), whereas mammal functional dispersion was elevated throughout much of tropical South America (Figure 3E). Functional trophic asymmetry in dispersion displayed a distinct spatial pattern characterized by broadly positive values across much of the Neotropics but negative values concentrated in southeastern Brazil (Figure 3F).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/clipboard-2754028270.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure 3: Spatial patterns of functional richness, functional dispersion, and functional trophic asymmetry across Neotropical biogeographic provinces. Maps show standardized effect sizes (SES) of functional richness (top row) and functional dispersion (bottom row) for palm assemblages (left column), mammal assemblages (middle column), and functional trophic asymmetry (FTA; right column). Positive SES values (red) indicate greater functional structure than expected under null model expectations, whereas negative SES values (blue) indicate lower functional structure than expected. FTA represents the difference in SES between producer and consumer assemblages for each biogeographic province. Biogeographic provinces are delineated according to the Neotropical regionalization of Morrone (2014)."><img src="images/clipboard-2754028270.png" class="img-fluid figure-img" alt="Figure 3: Spatial patterns of functional richness, functional dispersion, and functional trophic asymmetry across Neotropical biogeographic provinces. Maps show standardized effect sizes (SES) of functional richness (top row) and functional dispersion (bottom row) for palm assemblages (left column), mammal assemblages (middle column), and functional trophic asymmetry (FTA; right column). Positive SES values (red) indicate greater functional structure than expected under null model expectations, whereas negative SES values (blue) indicate lower functional structure than expected. FTA represents the difference in SES between producer and consumer assemblages for each biogeographic province. Biogeographic provinces are delineated according to the Neotropical regionalization of Morrone (2014)."></a></p>
+<figcaption>Figure 3: Spatial patterns of functional richness, functional dispersion, and functional trophic asymmetry across Neotropical biogeographic provinces. Maps show standardized effect sizes (SES) of functional richness (top row) and functional dispersion (bottom row) for palm assemblages (left column), mammal assemblages (middle column), and functional trophic asymmetry (FTA; right column). Positive SES values (red) indicate greater functional structure than expected under null model expectations, whereas negative SES values (blue) indicate lower functional structure than expected. FTA represents the difference in SES between producer and consumer assemblages for each biogeographic province. Biogeographic provinces are delineated according to the Neotropical regionalization of Morrone (2014).</figcaption>
+</figure>
+</div>
+<p><strong>The influence of climate on the functional diversity of palms and mammals</strong></p>
+<p>Precipitation seasonality and dry-season severity shaped mammal functional richness but had little influence on palm functional richness (Figure 4 A-B, Table 1). Mammal SES functional richness was significantly associated with PC2, the moisture availability and dry-season intensity gradient (F = 1.23, <em>P</em> = 0.022), while PC1 showed a weak, non-significant trend (<em>P</em> = 0.101) (Table 1). The mammal model explained 19.8% of the deviance (adjusted R² = 0.140) (Table 2). In contrast, Palm SES functional richness showed no significant relationship with any climatic axis, with the model explaining only 4.1% of the deviance (adjusted R² = 0.025) (Tables 1, 2). Temperature seasonality, moisture availability, and climatic stability shaped mammal functional dispersion but had comparatively little influence on palm functional dispersion (Figure 4C-D, Table 1). Mammal SES functional dispersion was significantly associated with both PC1, the broad temperature–seasonality gradient (F = 1.99, <em>P</em> = 0.007), while PC2 showed a marginal effect (<em>P</em> = 0.071) (Table 1). The mammal model explained 32.2% of the deviance (adjusted R² = 0.265) (Table 2). In contrast, Palm SES functional dispersion showed only a weak, non-significant association with PC1, the temperature–seasonality gradient (F = 0.72, <em>P</em> = 0.091), while PC2 had no significant effects (Table 1). The palm model explained 14.4% of the deviance (adjusted R² = 0.098) (Table 2). &nbsp;Climatic gradients remained robust predictors of multitrophic functional diversity after controlling for biogeographical spatial structure (Figure 6). Specifically, model support remained virtually unchanged for palm functional richness, mammal functional dispersion (ΔAIC &lt; 1). However, models of palm functional dispersion showed a modest improvement after accounting for space (ΔAIC = 3.85), whereas mammal functional richness exhibited a substantial increase in model support (ΔAIC = 22.6; deviance explained = 70.3%) (Table 2).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/clipboard-420124593.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure 4. Climatic responses of producer and consumer functional diversity across the two major climatic gradients. Partial effects from generalized additive models relating climatic principal components to functional richness (FRic; left column) and functional dispersion (FDis; right column) of palm (green) and mammal (orange) assemblages. (A) FRic responses to PC1. (B) FDis responses to PC1. (C) FRic responses to PC2. (D) FDis responses to PC2. Solid lines represent fitted smooth functions and shaded ribbons denote ±2 standard errors. Principal components summarize multivariate climatic variation derived from 19 bioclimatic variables (Figure 2). Responses are shown on the scale of the model partial effects, with positive and negative values indicating increases and decreases in functional diversity relative to the model intercept, respectively."><img src="images/clipboard-420124593.png" class="img-fluid figure-img" alt="Figure 4. Climatic responses of producer and consumer functional diversity across the two major climatic gradients. Partial effects from generalized additive models relating climatic principal components to functional richness (FRic; left column) and functional dispersion (FDis; right column) of palm (green) and mammal (orange) assemblages. (A) FRic responses to PC1. (B) FDis responses to PC1. (C) FRic responses to PC2. (D) FDis responses to PC2. Solid lines represent fitted smooth functions and shaded ribbons denote ±2 standard errors. Principal components summarize multivariate climatic variation derived from 19 bioclimatic variables (Figure 2). Responses are shown on the scale of the model partial effects, with positive and negative values indicating increases and decreases in functional diversity relative to the model intercept, respectively."></a></p>
+<figcaption><strong>Figure 4. Climatic responses of producer and consumer functional diversity across the two major climatic gradients.</strong> Partial effects from generalized additive models relating climatic principal components to functional richness (FRic; left column) and functional dispersion (FDis; right column) of palm (green) and mammal (orange) assemblages. (A) FRic responses to PC1. (B) FDis responses to PC1. (C) FRic responses to PC2. (D) FDis responses to PC2. Solid lines represent fitted smooth functions and shaded ribbons denote ±2 standard errors. Principal components summarize multivariate climatic variation derived from 19 bioclimatic variables (Figure 2). Responses are shown on the scale of the model partial effects, with positive and negative values indicating increases and decreases in functional diversity relative to the model intercept, respectively.</figcaption>
+</figure>
+</div>
+<p><strong>The influence of climate on functional trophic asymmetry</strong></p>
+<p>The climatic mechanisms differed between the two dimensions of functional diversity. While functional richness asymmetry exhibited little climatic structure, with SES FR asymmetry showing no significant relationship with any climatic axis and climate explaining only 1.4% of the deviance, functional dispersion asymmetry emerged primarily along the PC1 climatic gradient, which was the only significant predictor of SES FDis asymmetry (F = 2.86, P = 0.002), explaining 29.4% of the deviance (adjusted R² = 0.243), whereas PC2 had no detectable effects (Figure 5, Table 1). Model support remained virtually unchanged for both FTA metrics (ΔAIC &lt; 1) (Figure 6)</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Table 1: Significance of climatic gradients in generalized additive models of functional diversity and trophic asymmetry.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Estimated degrees of freedom (EDF), F-statistics, and associated P-values for smooth terms relating the first three climatic principal components (PC1–PC3) to functional richness (FRic), functional dispersion (FDis), and functional trophic asymmetry (FTA). Climatic effects were generally weak for richness-based metrics, with only mammal FRic showing a significant association with PC2. In contrast, dispersion-based metrics exhibited stronger climatic relationships, particularly for mammal FDis, which was significantly associated with PC1 and PC3, and FTA FDis, which showed a significant association with PC1. Estimated degrees of freedom close to zero indicate little support for nonlinear responses along the corresponding climatic gradient.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Response</th>
+<th><strong>PC1</strong></th>
+<th></th>
+<th></th>
+<th><strong>PC2</strong></th>
+<th></th>
+<th></th>
+<th><strong>PC3</strong></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>edf</td>
+<td>F</td>
+<td><em>P</em></td>
+<td>edf</td>
+<td>F</td>
+<td><em>P</em></td>
+<td>edf</td>
+<td>F</td>
+<td><em>P</em></td>
+</tr>
+<tr class="even">
+<td>Palm FRic</td>
+<td>0.60</td>
+<td>0.25</td>
+<td>0.201</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.441</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.623</td>
+</tr>
+<tr class="odd">
+<td>Palm FDis</td>
+<td>1.19</td>
+<td>0.72</td>
+<td>0.091</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.363</td>
+<td>0.73</td>
+<td>0.34</td>
+<td>0.159</td>
+</tr>
+<tr class="even">
+<td>Mammal FRic</td>
+<td>1.43</td>
+<td>0.83</td>
+<td>0.101</td>
+<td>1.17</td>
+<td>1.23</td>
+<td><strong>0.022</strong></td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.634</td>
+</tr>
+<tr class="odd">
+<td>Mammal FDis</td>
+<td>1.45</td>
+<td>1.99</td>
+<td><strong>0.007</strong></td>
+<td>0.69</td>
+<td>0.55</td>
+<td>0.071</td>
+<td>0.81</td>
+<td>1.06</td>
+<td><strong>0.028</strong></td>
+</tr>
+<tr class="even">
+<td>FTA FRic</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.399</td>
+<td>0.24</td>
+<td>0.08</td>
+<td>0.260</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.979</td>
+</tr>
+<tr class="odd">
+<td>FTA FDis</td>
+<td>1.65</td>
+<td>2.86</td>
+<td><strong>0.002</strong></td>
+<td>0.92</td>
+<td>0.40</td>
+<td>0.166</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.927</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Table 2: Performance of generalized additive models relating climatic gradients to functional diversity and trophic asymmetry across Neotropical biogeographic provinces.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Model performance is summarized by the percentage of deviance explained, adjusted R², Akaike Information Criterion (AIC), and the change in AIC following the inclusion of spatial structure (ΔAIC). Positive ΔAIC values indicate support for including spatial predictors, whereas negative values indicate no improvement over climate-only models.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 32%">
+<col style="width: 20%">
+<col style="width: 16%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Response</th>
+<th>Deviance explained (%)</th>
+<th>Adjusted <em>R</em>²</th>
+<th>AIC</th>
+<th>ΔAIC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Palm FR</td>
+<td>4.1</td>
+<td>0.025</td>
+<td>118.07</td>
+<td>-0.38</td>
+</tr>
+<tr class="even">
+<td>Palm FDis</td>
+<td>14.4</td>
+<td>0.098</td>
+<td>131.60</td>
+<td>0.44</td>
+</tr>
+<tr class="odd">
+<td>Mammal FR</td>
+<td>19.8</td>
+<td>0.140</td>
+<td>120.03</td>
+<td>1.75</td>
+</tr>
+<tr class="even">
+<td>Mammal FDis</td>
+<td><strong>32.2</strong></td>
+<td><strong>0.265</strong></td>
+<td><strong>115.30</strong></td>
+<td><strong>7.68</strong></td>
+</tr>
+<tr class="odd">
+<td>FTA-FR</td>
+<td>1.4</td>
+<td>0.008</td>
+<td>136.89</td>
+<td>-0.27</td>
+</tr>
+<tr class="even">
+<td>FTA-FDis</td>
+<td><strong>29.4</strong></td>
+<td><strong>0.243</strong></td>
+<td>143.56</td>
+<td><strong>6.69</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/clipboard-112102465.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure 4. Climatic distribution of functional trophic asymmetry across the two major climatic gradients. Predicted response surfaces from generalized additive models relating climatic principal components PC1 (warm/stable to cold/seasonal) and PC2 (dry to wet) to functional trophic asymmetry in (A) functional richness (FTA-FRic) and (B) functional dispersion (FTA-FDis). Colored points represent observed biogeographic provinces, with colors indicating the magnitude and direction of asymmetry (blue = greater palm functional diversity relative to mammals; red = greater mammal functional diversity relative to palms). Contours and shaded surfaces depict model predictions across the climatic space occupied by the Neotropics. Principal components summarize multivariate climatic variation derived from 19 bioclimatic variables (Figure 2)."><img src="images/clipboard-112102465.png" class="img-fluid figure-img" alt="Figure 4. Climatic distribution of functional trophic asymmetry across the two major climatic gradients. Predicted response surfaces from generalized additive models relating climatic principal components PC1 (warm/stable to cold/seasonal) and PC2 (dry to wet) to functional trophic asymmetry in (A) functional richness (FTA-FRic) and (B) functional dispersion (FTA-FDis). Colored points represent observed biogeographic provinces, with colors indicating the magnitude and direction of asymmetry (blue = greater palm functional diversity relative to mammals; red = greater mammal functional diversity relative to palms). Contours and shaded surfaces depict model predictions across the climatic space occupied by the Neotropics. Principal components summarize multivariate climatic variation derived from 19 bioclimatic variables (Figure 2)."></a></p>
+<figcaption><strong>Figure 4. Climatic distribution of functional trophic asymmetry across the two major climatic gradients.</strong> Predicted response surfaces from generalized additive models relating climatic principal components PC1 (warm/stable to cold/seasonal) and PC2 (dry to wet) to functional trophic asymmetry in (A) functional richness (FTA-FRic) and (B) functional dispersion (FTA-FDis). Colored points represent observed biogeographic provinces, with colors indicating the magnitude and direction of asymmetry (blue = greater palm functional diversity relative to mammals; red = greater mammal functional diversity relative to palms). Contours and shaded surfaces depict model predictions across the climatic space occupied by the Neotropics. Principal components summarize multivariate climatic variation derived from 19 bioclimatic variables (Figure 2).</figcaption>
+</figure>
+</div>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">DISCUSSION</h2>
+<p>Our study reveals that functional traits relevant to the assembly of mutualistic interactions between producers (palms) and their consumers (mammalian frugivores) are subject to different relative strengths of environmental filtering among trophic levels, and over geographic space in the Neotropics. In palm-mammal frugivore assemblages, climatic gradients exert stronger effects on mammalian than palm functional diversity. These differences (a.k.a. functional trophic asymmetry) reach their maximum in biogeographic regions characterized by strong dry-season intensity and pronounced climatic seasonality.</p>
+<p><strong>The influence of climate on FTA</strong></p>
+<p>Our findings suggest that contemporary climate differentially filters producer and consumer functional diversity, contributing to generating geographic variation in FTA across biogeographic regions. Rather than influencing both trophic levels in parallel, climatic gradients disproportionately reshaped mammalian functional diversity while leaving palm functional diversity comparatively unchanged, indicating that spatial variation in FTA arises primarily through climate-driven reorganization of consumer assemblages. Climatic effects were also stronger for functional dispersion than for functional richness. The stronger climatic signal for mammalian functional dispersion is consistent with previous observations of ecological packing in species-rich tropical assemblages, where warm, productive and climatically stable environments promote the coexistence of functionally similar species (Safi et al.&nbsp;2011; González-Maya et al.&nbsp;2017). Increased packing of consumer functional space is expected to increase overlap in potential interaction niches, allowing multiple mammal species to exploit similar sets of palm resources. Consequently, contemporary climate may reshape the organization of mutualistic interactions primarily by reorganizing consumer functional space rather than by changing the breadth of ecological strategies available for palm seed dispersal. Such changes may alter the extent to which multiple frugivore species perform similar seed-dispersal functions, thereby modifying functional redundancy within mutualistic networks. The stronger climatic response of mammalian functional diversity may reflect the greater sensitivity of mammalian functional traits to energetic constraints and resource availability (Boratynsky et al., 2021; Brand et al., 2023), whereas palm functional traits are likely buffered by longer generation times and stronger historical legacies. Such comparatively weaker climatic responses of palm functional diversity are consistent with evidence that present-day palm assemblages retain a strong historical imprint of past climatic conditions, reducing their sensitivity to contemporary environmental gradients (Kissling et al.&nbsp;2012; Göldel et al.&nbsp;2015).</p>
+<p><strong>The potential consequences of FTA for ecological network assembly</strong></p>
+<p>Differential climatic responses across trophic levels may have important consequences for the assembly and persistence of ecological interactions. Because mutualistic interactions emerge through trait matching between producers and consumers, the ecological consequences of functional trophic asymmetry are likely to depend on how strongly interactions are constrained by compatible trait combinations (Dehling et al.&nbsp;2014; Bartomeus et al., 2016; Albrecht et al.&nbsp;2018; Armbruster et al., 2023). &nbsp;As such, the effects of functional trophic asymmetry may depend on the flexibility of species to form novel interactions (Levins 1963; Marjakangas et al., 2025).&nbsp; When interactions are relatively flexible, shifts in consumer functional composition may be accommodated through partner switching, allowing interaction networks to reorganize while maintaining overall connectivity (Spiesman et al., 2016; Caradonna et al., 2020; Marjakangas et al., 2025). Conversely, where interactions rely on a narrow range of compatible trait combinations, asymmetric changes in producer and consumer functional diversity may reduce the availability of suitable interaction partners, potentially increasing the risk of interaction loss and secondary extinctions (Bascompte &amp; Jordano 2007; Memmot et al., 2024; Schleuning et al.&nbsp;2012; 2016). These suggest that functional trophic asymmetry may help identify regions where climatic change is most likely to reorganize ecological networks (Classen et al., 2020), providing a functional link between environmental filtering, trait matching, and the assembly of multitrophic networks (Markakangas et al., 2022).</p>
+<p>An important next step will be to evaluate whether functional trophic asymmetry predicts the organization of empirical ecological networks (Hegland et al., 2020; Classen et al., 2020; Yahaya et al., 2024). Although our framework infers potential interaction niche structure from species traits and distributions, increasing availability of standardized regional interaction datasets (i.e.&nbsp;metawebs) (Poelen et al., 2014; Gravel et al., 2019; Maiorano et al., 2020) now provides opportunities to test whether regions with greater functional trophic asymmetry also exhibit predictable changes in network architecture, such as interaction specialization, modularity, connectance, or robustness to species loss (Bascompte et al., 2007;) . Such comparisons would establish whether asymmetries in producer and consumer functional diversity translate into realized differences in network structure and ecosystem function (Schleuning et al., 2015; Eisenhauer et al., 2019). Future studies could also bridge macroecological predictions with local ecological networks by downscaling synthetic interaction networks using information on species abundances, habitat suitability, movement, or local environmental conditions (Banville et al., 2025; Beumer et al.&nbsp;2025). Incorporating these ecological constraints would improve the realism of predicted interactions while allowing explicit tests of how functional trophic asymmetry influences network assembly across spatial scales (Galiana et al., 2018; Ponisio et al., 2019; Thuiller et al., 2024).</p>
+<p><strong>Functional trophic asymmetry as a multitrophic indicator of ecological processes and their response to global changes</strong></p>
+<p>Our findings suggest that climatic filtering is one mechanism generating functional trophic asymmetry, but climate is unlikely to be the only driver. Habitat loss, defaunation, biological invasions, and other forms of anthropogenic environmental change can independently alter the functional composition of producers or consumers, potentially increasing or reducing asymmetry between trophic levels (Tinoco et al.&nbsp;2018; Guevara et al.&nbsp;2023a, 2023b; Bello et al.&nbsp;2023; Guerra et al.&nbsp;2025). This perspective is consistent with a growing body of evidence showing that anthropogenic disturbances often affect trophic levels asymmetrically, with consumer communities, particularly large vertebrates, frequently exhibiting greater functional losses than producers (Duffy 2003; Hogsden et al.&nbsp;2009; Dirzo et al.&nbsp;2014). Functional trophic asymmetry therefore provides a framework for quantifying these differential responses and comparing how diverse environmental drivers reshape the relative functional organization of interacting trophic levels. By extending trait-based approaches beyond single trophic levels, FTA offers a common basis for investigating how environmental change propagates through multitrophic communities and may ultimately influence the organization of ecological interactions.</p>
+<p>Although we focused on climatic gradients, the contrasting responses of functional richness and functional dispersion suggest that different eco-evolutionary processes may leave distinct signatures on functional trophic asymmetry. Functional richness asymmetry likely reflects, at least in part, long-term evolutionary and biogeographic processes that determine the regional pool of functional strategies available to each trophic level. Similar contrasts between historical legacies and contemporary environmental filtering have been reported across a range of taxa, although the relative contribution of each process varies among systems. For example, Quaternary climatic history has a strong influence on plant functional diversity (Ordoñez &amp; Svenning 2017), whereas contemporary climatic gradients more strongly structure functional diversity in woody plants and mammals (Swenson et al.&nbsp;2012; Hedberg &amp; Smith 2025). Conversely, global freshwater fish assemblages exhibit stronger historical controls on functional dispersion but stronger contemporary controls on functional richness (Su et al.&nbsp;2022). Together, these findings suggest that functional trophic asymmetry extends beyond a descriptive measure of multitrophic organization by providing a framework that could be extended to investigate the relative influence of historical eco-evolutionary processes and contemporary environmental filtering on interacting trophic levels.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">CONCLUSION</h2>
+<p>As climate change accelerates, shifts in precipitation regimes, dry-season intensity, and climatic stability are likely to alter functional trophic asymmetry in multitrophic palm–frugivore assemblages in the Neotropics. Because climate and other global change drivers can differentially affect producer and consumer functional diversity, they may reshape interaction niches and the functional organization of ecological networks, potentially reducing network resilience where opportunities for interaction rewiring are limited (Tylianakis et al.&nbsp;2008; Caradonna et al.&nbsp;2021; Cruz et al.&nbsp;2023). However, these predictions remain to be tested across different ecological systems to determine the generality of functional trophic asymmetry as an indicator of multitrophic responses to environmental change (Acosta-Rojas et al.&nbsp;2023; Nowak et al.&nbsp;2022; Landim et al.&nbsp;2025; Rabeau et al.&nbsp;2025). As species distributions continue to shift under climate change (Aizen et al.&nbsp;2012; Valiente-Banuet et al.&nbsp;2015; Bartley et al.&nbsp;2019; Hurtado et al.&nbsp;2024), functional trophic asymmetry provides a framework for generating and testing hypotheses about how differential functional responses across trophic levels may reshape ecological networks under global change.<br>
+</p>
+</section>
+<section id="supplementary-material" class="level2">
+<h2 class="anchored" data-anchor-id="supplementary-material">Supplementary material</h2>
+<section id="cumulative-variance-explained-by-pcoa-axes" class="level3">
+<h3 class="anchored" data-anchor-id="cumulative-variance-explained-by-pcoa-axes">Cumulative variance explained by PCoA axes</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/clipboard-1614616575.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Variance explained by retained functional trait axes. Bars (A) show the percentage of trait variation explained by individual PCoA axes for palms and mammalian frugivores. Lines (B) show cumulative variance explained. Dashed horizontal lines indicate the 75% threshold used to select retained axes, and dashed vertical lines indicate the number of axes retained for each trophic level."><img src="images/clipboard-1614616575.png" class="img-fluid figure-img" alt="Variance explained by retained functional trait axes. Bars (A) show the percentage of trait variation explained by individual PCoA axes for palms and mammalian frugivores. Lines (B) show cumulative variance explained. Dashed horizontal lines indicate the 75% threshold used to select retained axes, and dashed vertical lines indicate the number of axes retained for each trophic level."></a></p>
+<figcaption><strong>Variance explained by retained functional trait axes.</strong> Bars (A) show the percentage of trait variation explained by individual PCoA axes for palms and mammalian frugivores. Lines (B) show cumulative variance explained. Dashed horizontal lines indicate the 75% threshold used to select retained axes, and dashed vertical lines indicate the number of axes retained for each trophic level.</figcaption>
+</figure>
+</div>
+</section>
+<section id="trait-spaces-of-palms-and-mammals" class="level3">
+<h3 class="anchored" data-anchor-id="trait-spaces-of-palms-and-mammals">Trait spaces of palms and mammals</h3>
+<p><a href="images/clipboard-1496440380.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="images/clipboard-1496440380.png" class="img-fluid"></a></p>
+</section>
+</section>
+<section id="pariwise-correlations-among-climatic-variables" class="level2">
+<h2 class="anchored" data-anchor-id="pariwise-correlations-among-climatic-variables">Pariwise correlations among climatic variables</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/clipboard-2020062998.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Correlations among WorldClim bioclimatic variables across Neotropical biogeographic provinces. Pearson correlation coefficients were calculated from mean bioclimatic values extracted for each province. Strong correlations among variables justify the use of principal component analysis to summarize climatic variation before modelling functional diversity and functional trophic asymmetry."><img src="images/clipboard-2020062998.png" class="img-fluid figure-img" alt="Correlations among WorldClim bioclimatic variables across Neotropical biogeographic provinces. Pearson correlation coefficients were calculated from mean bioclimatic values extracted for each province. Strong correlations among variables justify the use of principal component analysis to summarize climatic variation before modelling functional diversity and functional trophic asymmetry."></a></p>
+<figcaption><strong>Correlations among WorldClim bioclimatic variables across Neotropical biogeographic provinces</strong>. Pearson correlation coefficients were calculated from mean bioclimatic values extracted for each province. Strong correlations among variables justify the use of principal component analysis to summarize climatic variation before modelling functional diversity and functional trophic asymmetry.</figcaption>
+</figure>
+</div>
+<p>PCA loadings</p>
+<p><a href="images/clipboard-4024344175.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="images/clipboard-4024344175.png" class="img-fluid"></a></p>
+<p>PCA contributions</p>
+<p><a href="images/clipboard-2140011653.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="images/clipboard-2140011653.png" class="img-fluid" width="731"></a></p>
+</section>
+<section id="null-model-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="null-model-distributions">Null model distributions</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/clipboard-1202330071.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Distribution of trophic-level standardized effect sizes and functional trophic asymmetry across Neotropical biogeographic provinces. Boxplots show standardized effect sizes of functional richness and functional dispersion for palm and mammal assemblages, together with functional trophic asymmetry (FTA), calculated as mammal SES minus palm SES. Positive FTA values indicate greater mammal functional diversity relative to null expectations than palms, whereas negative values indicate greater palm functional diversity relative to mammals."><img src="images/clipboard-1202330071.png" class="img-fluid figure-img" alt="Distribution of trophic-level standardized effect sizes and functional trophic asymmetry across Neotropical biogeographic provinces. Boxplots show standardized effect sizes of functional richness and functional dispersion for palm and mammal assemblages, together with functional trophic asymmetry (FTA), calculated as mammal SES minus palm SES. Positive FTA values indicate greater mammal functional diversity relative to null expectations than palms, whereas negative values indicate greater palm functional diversity relative to mammals."></a></p>
+<figcaption>Distribution of trophic-level standardized effect sizes and functional trophic asymmetry across Neotropical biogeographic provinces. Boxplots show standardized effect sizes of functional richness and functional dispersion for palm and mammal assemblages, together with functional trophic asymmetry (FTA), calculated as mammal SES minus palm SES. Positive FTA values indicate greater mammal functional diversity relative to null expectations than palms, whereas negative values indicate greater palm functional diversity relative to mammals.</figcaption>
+</figure>
+</div>
+</section>
+<section id="diagnosis-of-gams" class="level2">
+<h2 class="anchored" data-anchor-id="diagnosis-of-gams">diagnosis of GAMs</h2>
+<p>FTA-frich</p>
+<p><a href="images/clipboard-734488643.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="images/clipboard-734488643.png" class="img-fluid"></a></p>
+<p>FTA-fdis</p>
+<p><a href="images/clipboard-1474186949.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="images/clipboard-1474186949.png" class="img-fluid"></a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/clipboard-2162621761.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure 5: Improvement in model fit after accounting for spatial structure. Bars show the change in Akaike Information Criterion (ΔAIC) between climate-only models and models including both climatic and spatial predictors for functional richness (FRic), functional dispersion (FDis), and functional trophic asymmetry (FTA). Positive values indicate improved model support following the inclusion of spatial structure, whereas negative values indicate no improvement. The vertical dashed line marks ΔAIC = 2, a commonly used threshold for meaningful model improvement."><img src="images/clipboard-2162621761.png" class="img-fluid figure-img" alt="Figure 5: Improvement in model fit after accounting for spatial structure. Bars show the change in Akaike Information Criterion (ΔAIC) between climate-only models and models including both climatic and spatial predictors for functional richness (FRic), functional dispersion (FDis), and functional trophic asymmetry (FTA). Positive values indicate improved model support following the inclusion of spatial structure, whereas negative values indicate no improvement. The vertical dashed line marks ΔAIC = 2, a commonly used threshold for meaningful model improvement."></a></p>
+<figcaption>Figure 5: Improvement in model fit after accounting for spatial structure. Bars show the change in Akaike Information Criterion (ΔAIC) between climate-only models and models including both climatic and spatial predictors for functional richness (FRic), functional dispersion (FDis), and functional trophic asymmetry (FTA). Positive values indicate improved model support following the inclusion of spatial structure, whereas negative values indicate no improvement. The vertical dashed line marks ΔAIC = 2, a commonly used threshold for meaningful model improvement.</figcaption>
+</figure>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
